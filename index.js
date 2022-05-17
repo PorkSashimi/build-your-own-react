@@ -50,18 +50,19 @@ function createElement(element, container) {
 // ------
 
 const element = Didact.createElement(
-  'h1',
-  {
-    title: 'tips',
-  },
-  'hello  h1',
-  Didact.createElement(
-    'h2',
+  'ul',
+  null,
+  ...new Array(1000).fill({}).map((_, index) => Didact.createElement(
+    'li',
     null,
-    'hello h2'
-  )
+    index
+  ))
 );
 
 console.log(element);
 
 Didact.render(element, document.getElementById('root'));
+
+window.requestIdleCallback(() => {
+  console.log('to');
+})
